@@ -1,33 +1,483 @@
 <!doctype html>
-<html lang="en-AU">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex,nofollow" />
-  <title>Accurate Digits | Service Closed</title>
+
+  <!-- SEO: keep it quiet -->
+  <title>Accurate Digits | Archived Project</title>
+  <meta name="description" content="Accurate Digits is an archived software project exploring how AI-assisted analysis could support review of structured reports. The service is no longer active." />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" />
+
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: #ffffff; color: #0f132e; }
-    .wrap { max-width: 820px; margin: 0 auto; padding: 56px 20px; }
-    .card { border: 1px solid #e6e6e8; border-radius: 16px; padding: 28px; background: #f7f7f8; }
-    h1 { font-size: 28px; margin: 0 0 12px; }
-    p { font-size: 16px; line-height: 1.5; margin: 0 0 12px; }
-    .small { font-size: 13px; color: #3b3f56; margin-top: 18px; }
-    .badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #ffffff; border: 1px solid #e6e6e8; font-size: 13px; }
-    a { color: #0f132e; }
+    :root{
+      --oxford: #0F132E;
+      --verdigris: #2FB5BE;
+      --seasalt: #F7F7F8;
+      --white: #FFFFFF;
+      --text: #0F132E;
+      --muted: rgba(15, 19, 46, 0.75);
+      --border: rgba(15, 19, 46, 0.12);
+      --shadow: 0 18px 40px rgba(15, 19, 46, 0.10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0 0 16px 0; }
+    ul { margin: 12px 0 0 22px; }
+    li { margin: 8px 0; }
+
+    .wrap{
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* Top notice */
+    .notice{
+      background: rgba(47, 181, 190, 0.10);
+      border-bottom: 1px solid rgba(47, 181, 190, 0.22);
+      color: var(--oxford);
+      font-size: 14px;
+    }
+    .notice .wrap{
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 50;
+    }
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .brand img{
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .nav{
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav a{
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav a:hover{
+      background: rgba(15, 19, 46, 0.06);
+      color: var(--oxford);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 52px 0 28px 0;
+    }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .kicker{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(47, 181, 190, 0.35);
+      background: rgba(47, 181, 190, 0.10);
+      color: var(--oxford);
+      font-size: 13px;
+      margin-bottom: 18px;
+      width: fit-content;
+    }
+    .hero h1{
+      font-size: clamp(36px, 4.6vw, 64px);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      margin: 0 0 14px 0;
+    }
+    .hero p.lead{
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 18px;
+    }
+    .hero p.small{
+      font-size: 14px;
+      color: rgba(15, 19, 46, 0.68);
+      max-width: 72ch;
+    }
+
+    .hero-media{
+      background: var(--seasalt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-media video{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Sections */
+    section{
+      padding: 44px 0;
+    }
+    .section-title{
+      font-size: 28px;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.01em;
+    }
+    .section-sub{
+      color: var(--muted);
+      max-width: 78ch;
+      margin-bottom: 18px;
+    }
+
+    .card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 10px 26px rgba(15, 19, 46, 0.06);
+    }
+
+    /* Two-column content block */
+    .two-col{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    /* Demo */
+    .demo{
+      background: var(--seasalt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-wrap{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .video-frame{
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 19, 46, 0.14);
+      background: #000;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+    }
+    .video-frame iframe{
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Reports image block */
+    .reports-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+    .reports-img{
+      background: var(--seasalt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px rgba(15, 19, 46, 0.08);
+      overflow: hidden;
+    }
+    .reports-img img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Status list */
+    .status-list{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .status-list li{
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(15, 19, 46, 0.08);
+      margin: 0;
+    }
+    .status-list li:last-child{ border-bottom: none; }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--verdigris);
+      margin-top: 7px;
+      flex: 0 0 auto;
+    }
+
+    /* Footer */
+    footer{
+      padding: 28px 0 40px 0;
+      color: rgba(15, 19, 46, 0.70);
+      font-size: 13px;
+    }
+    .footer-inner{
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-logo{
+      height: 22px;
+      width: auto;
+      opacity: 0.92;
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav{ display: none; }
+      .two-col{ grid-template-columns: 1fr; }
+      .reports-grid{ grid-template-columns: 1fr; }
+      .brand{ min-width: auto; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="badge">Accurate Digits</div>
-    <h1>Service closed</h1>
-
-    <div class="card">
-      <p>Accurate Digits is no longer operating and the product has been decommissioned.</p>
-      <p>If you need to get in touch regarding historical matters, please email <strong>hello@accuratedigits.com</strong> (while monitored) or contact the business via LinkedIn.</p>
-      <p class="small">This page is provided for general information only.</p>
+  <div class="notice">
+    <div class="wrap">
+      Accurate Digits is no longer commercially available. The software has been formally decommissioned.
     </div>
-
-    <p class="small">© Accurate Digits</p>
   </div>
+
+  <header>
+    <div class="wrap">
+      <div class="header-inner">
+        <div class="brand" aria-label="Accurate Digits">
+          <img src="assets/logo-200px-resized.png" alt="Accurate Digits logo" />
+        </div>
+        <nav class="nav" aria-label="Page navigation">
+          <a href="#overview">Overview</a>
+          <a href="#ai">AI-assisted approach</a>
+          <a href="#demo">Demonstration</a>
+          <a href="#reports">Reports</a>
+          <a href="#status">Status</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">Archived Project</div>
+            <h1>AI-assisted report review for confident reporting</h1>
+            <p class="lead">
+              Accurate Digits was a software project exploring how AI-assisted analysis could support the review of
+              structured, data-heavy reports such as financial, management, and operational reports.
+            </p>
+            <p class="small">
+              Accurate Digits is no longer commercially available. No accounts, access, services, or support are provided.
+              This page is maintained as an archival overview of the project and its approach.
+            </p>
+          </div>
+
+          <div class="hero-media" aria-label="Accurate Digits scanning demo">
+            <video autoplay loop muted playsinline
+              poster="assets/image%20scanner%20-highlighted.png"
+              aria-label="Accurate Digits demo showing automated review highlights">
+              <source src="assets/Image-Scanner-2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="wrap">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-sub">
+          Accurate Digits examined how automated analysis could help professionals identify areas that may warrant closer attention during review,
+          particularly in environments where accuracy, consistency, and time pressure are critical. The intent was to support professional judgement, not replace it.
+        </p>
+      </div>
+    </section>
+
+    <!-- AI APPROACH -->
+    <section id="ai">
+      <div class="wrap">
+        <div class="two-col">
+          <div>
+            <h2 class="section-title">AI-assisted review approach</h2>
+            <p class="section-sub">
+              Accurate Digits explored how AI techniques could be applied to support the review of structured reports by identifying patterns and relationships
+              that commonly require human verification.
+            </p>
+          </div>
+          <div class="card">
+            <p style="margin:0 0 10px 0; color: var(--muted);">
+              In broad terms, the approach examined how AI could be used to:
+            </p>
+            <ul>
+              <li>Analyse structured, tabular report content</li>
+              <li>Identify relationships across rows, columns, and related values</li>
+              <li>Highlight patterns or inconsistencies that may warrant review</li>
+              <li>Surface areas of potential interest for further human assessment</li>
+              <li>Present findings in a clear, review-oriented format</li>
+            </ul>
+            <p style="margin:14px 0 0 0; color: var(--muted);">
+              The objective was to reduce repetitive manual checking while keeping professional judgement central to all review decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo" class="demo">
+      <div class="wrap">
+        <h2 class="section-title">Demonstration (archival)</h2>
+        <p class="section-sub">
+          The video below was recorded during development and illustrates how the system analysed reports and presented review cues.
+          This demonstration is provided for reference only. The software shown is no longer active.
+        </p>
+
+        <div class="demo-wrap">
+          <div class="video-frame" aria-label="YouTube demo">
+            <iframe
+              src="https://www.youtube.com/embed/3Z_d8zcm9qE"
+              title="Accurate Digits demonstration video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT TYPES -->
+    <section id="reports">
+      <div class="wrap">
+        <div class="reports-grid">
+          <div>
+            <h2 class="section-title">Types of reports explored</h2>
+            <p class="section-sub">
+              During development, the approach was explored across a range of report types commonly used in professional and operational settings.
+              The common characteristic was structured, tabular data where consistency and accuracy are essential.
+            </p>
+            <ul>
+              <li>Financial statements and supporting schedules</li>
+              <li>Management and board reports</li>
+              <li>KPI and performance summaries</li>
+              <li>Forecasts and planning models</li>
+              <li>Internal operational reports</li>
+              <li>Working papers and reconciliations</li>
+            </ul>
+          </div>
+
+          <div class="reports-img" aria-label="Report types">
+            <img src="assets/Different%20Report%20Types.png" alt="Examples of report types: annual report, business plan, financial report, product sales proposal, white paper" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section id="context">
+      <div class="wrap">
+        <h2 class="section-title">Context and purpose</h2>
+        <p class="section-sub">
+          Accurate Digits was developed as an exploration into how modern AI techniques could assist with review-heavy workflows.
+          The project drew on experience in finance, audit, and data-intensive environments, where small discrepancies can have outsized downstream impact.
+        </p>
+        <p class="section-sub" style="margin-bottom:0;">
+          While the product itself is no longer active, the project remains a reference example of how AI can be applied thoughtfully to support accuracy,
+          efficiency, and confidence in professional reporting.
+        </p>
+      </div>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status">
+      <div class="wrap">
+        <h2 class="section-title">Status</h2>
+        <div class="card">
+          <ul class="status-list" aria-label="Status list">
+            <li><span class="dot"></span><span>The software is no longer operational</span></li>
+            <li><span class="dot"></span><span>No accounts or access are available</span></li>
+            <li><span class="dot"></span><span>No data is collected or processed</span></li>
+            <li><span class="dot"></span><span>No services are offered</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <img class="footer-logo" src="assets/logo-200px-resized.png" alt="Accurate Digits logo" />
+        <div>© 2026 Accurate Digits Pty Ltd. All rights reserved.</div>
+        <div>This site is maintained as an informational archive.</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
