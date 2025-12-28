@@ -246,21 +246,12 @@
       margin: 0;
     }
     .status-list li{
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid rgba(15, 19, 46, 0.08);
       margin: 0;
+      list-style: none;
     }
-    .status-list li:last-child{ border-bottom: none; }
-    .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--verdigris);
-      margin-top: 7px;
-      flex: 0 0 auto;
-    }
+
 
     /* Footer */
     footer{
@@ -363,30 +354,29 @@
     <!-- AI APPROACH -->
     <section id="ai">
       <div class="wrap">
-        <div class="two-col">
-          <div>
-            <h2 class="section-title">AI-assisted review approach</h2>
-            <p class="section-sub">
-              Accurate Digits explored how AI techniques could be applied to support the review of structured reports by identifying patterns and relationships
-              that commonly require human verification.
-            </p>
-          </div>
-          <div class="card">
-            <p style="margin:0 0 10px 0; color: var(--muted);">
-              In broad terms, the approach examined how AI could be used to:
-            </p>
-            <ul>
-              <li>Analyse structured, tabular report content</li>
-              <li>Identify relationships across rows, columns, and related values</li>
-              <li>Highlight patterns or inconsistencies that may warrant review</li>
-              <li>Surface areas of potential interest for further human assessment</li>
-              <li>Present findings in a clear, review-oriented format</li>
-            </ul>
-            <p style="margin:14px 0 0 0; color: var(--muted);">
-              The objective was to reduce repetitive manual checking while keeping professional judgement central to all review decisions.
-            </p>
-          </div>
-        </div>
+        <h2 class="section-title">AI-assisted review approach</h2>
+
+        <p class="section-sub">
+          Accurate Digits explored how AI techniques could be applied to support the review of structured reports by identifying patterns and relationships
+          that commonly require human verification.
+        </p>
+        
+        <p class="section-sub">
+          In broad terms, the approach examined how AI could be used to:
+        </p>
+        
+        <ul>
+          <li>Analyse structured, tabular report content</li>
+          <li>Identify relationships across rows, columns, and related values</li>
+          <li>Highlight patterns or inconsistencies that may warrant review</li>
+          <li>Surface areas of potential interest for further human assessment</li>
+          <li>Present findings in a clear, review-oriented format</li>
+        </ul>
+        
+        <p class="section-sub">
+          The objective was to reduce repetitive manual checking while keeping professional judgement central to all review decisions.
+        </p>
+
       </div>
     </section>
 
@@ -398,19 +388,19 @@
           The video below was recorded during development and illustrates how the system analysed reports and presented review cues.
           This demonstration is provided for reference only. The software shown is no longer active.
         </p>
-
-        <div class="demo-wrap">
-          <div class="video-frame" aria-label="YouTube demo">
-            <iframe
-              src="https://www.youtube.com/embed/3Z_d8zcm9qE"
-              title="Accurate Digits demonstration video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
+    
+        <div style="position: relative; width: 100%; max-width: 500px; padding-bottom: 107%; border-radius: 12px; overflow: hidden; box-shadow: 0px 0px 18px rgba(26, 19, 72, 0.15); border: 1px solid rgba(63, 95, 172, 0.35); margin: 0 auto;">
+          <video
+            controls
+            preload="metadata"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            <source src="https://accuratedigits.com/hubfs/Video/Accountant%20Product%20Demo1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </section>
+
 
     <!-- REPORT TYPES -->
     <section id="reports">
@@ -460,10 +450,10 @@
         <h2 class="section-title">Status</h2>
         <div class="card">
           <ul class="status-list" aria-label="Status list">
-            <li><span class="dot"></span><span>The software is no longer operational</span></li>
-            <li><span class="dot"></span><span>No accounts or access are available</span></li>
-            <li><span class="dot"></span><span>No data is collected or processed</span></li>
-            <li><span class="dot"></span><span>No services are offered</span></li>
+            <li>The software is no longer operational</li>
+            <li>No accounts or access are available</li>
+            <li>No data is collected or processed</li>
+            <li>No services are offered</li>
           </ul>
         </div>
       </div>
